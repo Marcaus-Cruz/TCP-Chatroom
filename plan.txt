@@ -1,0 +1,25 @@
+Write you assignment plan here. Refer to the assignment PDF for details. Do not change this file name.
+
+
+1) Write a one paragraph summary of the program in your own words.  What is being asked of you?  What will you implement in this assignment?
+
+We are being asked to implement a sort of chatroom using the TCP protocol as we did in the last assignment. The server should be able to handle
+up to 255 "participants" and 255 "observers". Each participant has only one observer associated with them at any point of their connection. 
+As the names suggest, participants are able to chat with other participants and the observers are receiving the messages in real time but are not able to have a say in the conversation. Users are able to join and leave the chatroom at any point in time, and it should be shown to the clients who is
+leaving or joining.
+
+2) What you anticipate being the most challenging aspect of the assignment?
+
+The most difficult aspect of this assignment seems like it's going to be using the select() method to monitor connections to the server because we've
+are not familiar with it. Also, the complexity of the assignment (i.e. handling different events at any point in time) seems like it's going to be 
+problematic. And, of course, the infinite loop consantly prompting participants for input will probably take us a good amount of time because of our
+not-so-great experience with user input the last two projects.
+
+3) Give a list of at least three resources you plan to draw from if you get stuck on something.
+
+Prof. Shri, Project specification, Google, Stack Overflow, Project 2, Man pages
+
+4) What is your plan for meeting to finish this program (e.g. ``every Monday, Wednesday and Friday from 3pm-5pm until it's done.).
+
+Tuesday - Thursday or Sunday at any time that works with both schedules. We plan to be communicative about everything to ensure it's completion.
+

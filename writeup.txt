@@ -1,0 +1,21 @@
+Write your assignment writeup in this file. Refer to the assignment PDF for details. Do not change this file name.
+
+
+1) Declare/discuss any aspects of your client or server code that are not working.  What are your intuitions about why things are not working?  What issues you already tried and ruled out?  Given more time, what would you try next?  Detailed answers here are critical to getting partial credit for malfunctioning programs.
+    Something that isn't working in our client code is the sending of oversized private messaging. We know we'd have to send the first 1000 bytes, then prepend the @username again to the leftover message so that the server knows to send it privately again. We're also failing some of the timeout tests for both participant and observer files but, as far as we can tell, our code runs as expected.
+
+    Timeouts don't seem to work server side until the user provides input. Select doesn't mark the socket as read ready until data has been sent, either the username or shutdown if the client timed out. We attempted adding the socket to wrk_readfds immediately upon connecting and use socket option timeouts in tandem with an internal timer using time(), but this didn't seem to work either. We believe this issue is caused by a misunderstanding we have with select(), in combination with our use of socket options/internal timers.
+    When the user provides their username or shutdown, the server responds accordingly if a timeout has occurred, but this doesn't happen until select() marks that socket ready to read.
+
+2) Any assumptions you made for things not described in the specifications.
+    We're assuming that port numbers, as in the previous assignments, can be integers instead of unsigned shorts. Functionality hasn't changed so we assume it's okay.
+
+
+3) In a few sentences, describe how you tested that your code was working.
+    We finally fired up GDB to help debug and check values in specific cases at specific points. Other than that, we still used a whole lot of print statements and tested our code manually. We found a lot of bugs accidentally and fixed them along the way until none were showing. Once all of the noticable bugs were fixed, we tried to break our code as much as possible. That was fun.
+
+4) What was the most challenging aspect of this assignment, and why?
+    User input with fragmenting was the most challenging concept to wrap our heads around, using fgets in a loop.
+
+5) What variant/extension of this assignment would you like to try (e.g. a variant that is more powerful, more interesting, etc.)
+    We think that this assignment would be a whole lot more efficient/simplified if we were to use forking/multithreading; though we haven't thought it all the way through.
